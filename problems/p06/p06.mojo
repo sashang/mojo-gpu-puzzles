@@ -18,13 +18,10 @@ comptime dtype = DType.float32
 def add_10_blocks(
     output: UnsafePointer[Scalar[dtype], MutAnyOrigin],
     a: UnsafePointer[Scalar[dtype], MutAnyOrigin],
-    size: Int,
-):
+    size: Int):
     var i = block_dim.x * block_idx.x + thread_idx.x
-    # FILL ME IN (roughly 2 lines)
-
-
-# ANCHOR_END: add_10_blocks
+    if i < size:
+        output[i] = a[i] + 10
 
 
 def main() raises:
